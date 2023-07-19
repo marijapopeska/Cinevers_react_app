@@ -5,6 +5,10 @@ module.exports = {
   darkMode: false, //or media or class
   theme: {
     extend: {},
+    fontFamily: {
+      montserrat: ['montserrat', 'sans-serif'],
+      lato: ['lato', 'sans-serif'],
+    }
   },
   plugins: [require('tailwind-scrollbar-hide')],
 }
