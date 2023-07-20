@@ -8,7 +8,7 @@ module.exports = {
     fontFamily: {
       montserrat: ['montserrat', 'sans-serif'],
       lato: ['lato', 'sans-serif'],
-    }
+    },
   },
   plugins: [require('tailwind-scrollbar-hide')],
 }
