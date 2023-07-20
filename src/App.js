@@ -6,9 +6,7 @@ import HeaderWrapper from './components/HeaderWrapper';
 const App = () => {
   return (
     <div>
-      <div style={{ position: 'relative' }}>
-        <HeaderWrapper/>
-      </div>
+      <HeaderWrapper />
       <Hero />
       <Results />
     </div>
