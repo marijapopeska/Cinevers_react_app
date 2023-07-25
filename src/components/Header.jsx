@@ -5,7 +5,7 @@ import { MenuIcon, SearchIcon, BellIcon } from '@heroicons/react/outline';
 const Header = () => {
     return (
         <div>
-            <header className='flex flex-row sm:flex-row m-5 justify-between items-center relative'>
+            <header className='flex sm:flex-row m-8 justify-between items-center'>
                 <div className='flex flex-grow max-w-2xl gap-6'>
                     <HeaderItem Icon={MenuIcon} />
                     <h2 className='hidden md:flex hover:text-white cursor-pointer font-lato'>
