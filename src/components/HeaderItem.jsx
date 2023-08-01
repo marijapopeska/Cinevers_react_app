@@ -7,7 +7,7 @@ const HeaderItem = ({ Icon, hideOnMobile = false }) => {
         hideOnMobile ? 'hidden md:flex' : ''
       }`}
     >
-      <Icon className={`h-6 ${hideOnMobile ? 'group-hover:animate-bounce hover:text-white' : ''}`} />
+      <Icon className={`h-6 ${hideOnMobile ? 'group-hover:animate-bounce hover:text-white ' : ''}`} />
     </div>
   );
 };
