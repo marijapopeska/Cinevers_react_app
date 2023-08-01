@@ -18,7 +18,7 @@ const Hero = () => {
   return (
     <div className="relative">
       {/* Loop through videos */}
-      <div key={currentVideo.index} className="w-full h-[50vh] sm:h-[30vh] md:h-[60vh] lg:h-[80vh] xl:h-[90vh] overflow-hidden">
+      <div key={currentVideo.index} className="w-full h-[25vh] sm:h-[40vh] md:h-[40vh] lg:h-[50vh] xl:h-[90vh] overflow-hidden">
         {/* YouTube video */}
         <div className="h-full w-full aspect-w-16 aspect-h-9 transform scale-150 sm:scale-200 md:scale-150">
           <iframe
@@ -32,9 +32,11 @@ const Hero = () => {
         </div>
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black" />
+        {/* Header overlay */}
+        <div className="absolute top-0 left-0 w-full h-28 bg-gradient-to-b from-black to-transparent" />
         {/* Content */}
-        <div className="absolute bottom-8 text-white md:bottom-8 md:px-8 md:py-4 xl:bottom-12 xl:px-8 xl:py-4 px-8">
-          <h1 className="text-xl md:text-4xl lg:text-5xl font-bold mb-6">{currentVideo.title}</h1>
+        <div className="absolute bottom-0 text-white md:bottom-8 md:px-8 md:py-4 xl:bottom-12 xl:px-8 xl:py-4 px-8">
+          <h1 className="font-montserrat text-xl md:text-4xl lg:text-5xl font-bold mb-6">{currentVideo.title}</h1>
           <p className="text-base sm:text-base mb-6 max-w-xl md:hidden hidden lg:block">
             {currentVideo.description}
           </p>
@@ -58,12 +60,18 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        {/* Navigation arrows */}
-        <div className='absolute left-0 bottom-1/2 md:flex items-center justify-between w-full px-8'>
-          <button onClick={prevVideo}>
+       {/* Navigation arrows */}
+       <div className='absolute left-0 right-0 bottom-1/2 flex md:flex items-center justify-between px-8 md:bottom-1/2'>
+          <button onClick={prevVideo} className="md:hidden">
+            <ChevronLeftIcon className="h-6 w-6 text-white" />
+          </button>
+          <button onClick={nextVideo} className="md:hidden">
+            <ChevronRightIcon className="h-6 w-6 text-white" />
+          </button>
+          <button onClick={prevVideo} className="hidden md:block">
             <ChevronLeftIcon className="h-8 w-8 text-white" />
           </button>
-          <button onClick={nextVideo}>
+          <button onClick={nextVideo} className="hidden md:block">
             <ChevronRightIcon className="h-8 w-8 text-white" />
           </button>
         </div>
