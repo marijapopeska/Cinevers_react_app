@@ -1,39 +1,87 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { getMovies } from '../services/tmdbServices';
 import MovieCard from './MovieCard';
+import { ChevronRightIcon, ChevronLeftIcon} from '@heroicons/react/solid';
 
-const Results = () => {
+const Results = ({ endpoint }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [slideNumber, setSlideNumber] = useState(0);
+  const [translateValue, setTranslateValue] = useState(0);
+  const listRef = useRef();
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const response = await getMovies();
-      if (response.results.length > 0) {
-        return response.results;
+      try {
+        const response = await getMovies(endpoint);
+        setMovies(response.results || []);
+        console.log(response.results);
+      } catch (error) {
+        console.log(error);
+        setMovies([]);
+      } finally {
+        setLoading(false);
       }
-      return [];
+    };
+    fetchMovies();
+  }, [endpoint]);
+
+  useEffect(() => {
+    setSlideNumber(0);
+    setTranslateValue(0);
+  }, [movies]);
+
+  const handleResponsiveCardWidth = () => {
+    // card widths for different screen sizes
+    const cardWidths = {
+      small: 216,
+      medium: 309,
     };
 
-    setLoading(true);
-    fetchMovies()
-      .then((response) => {
-        console.log(response);
-        setMovies(response);
-        setLoading(false);
-      })
-      .catch((error) => console.log);
-  }, []);
+    // Current screen size
+    const screenWidth = window.innerWidth;
+    let currentCardWidth = cardWidths.medium;
+
+    if (screenWidth <= 640) {
+      currentCardWidth = cardWidths.small;
+    }
+
+    return currentCardWidth;
+  };
+
+  const handleClick = (direction) => {
+    const cardWidth = handleResponsiveCardWidth();
+    const visibleCards = Math.floor(window.innerWidth / cardWidth);
+
+    if (direction === 'left' && slideNumber > 0) {
+      setSlideNumber(slideNumber - 1);
+      setTranslateValue(translateValue + cardWidth);
+    } else if (direction === 'right' && slideNumber < movies.length - visibleCards) {
+      setSlideNumber(slideNumber + 1);
+      setTranslateValue(translateValue - cardWidth);
+    }
+  };
 
   return (
-    <div className='flex overflow-x-auto p-4 '>
+    <div className='flex overflow-x-scroll scrollbar-hide w=[100%]'>
       {loading === true ? (
         <h1>Loading...</h1>
       ) : (
-        <div className='flex space-x-4'>
-          {movies.map((movie, index) => (
-            <MovieCard key={index} movie={movie} />
-          ))}
+        <div style={{ width: 'fit-content' }}>
+          <div className='flex space-x-4 transition-transform duration-500 ease-out' ref={listRef} style={{ transform: `translateX(${translateValue}px)` }}>
+            {movies.map((movie, index) => (
+              <MovieCard key={index} movie={movie} />
+            ))}
+          </div>
+          {/* Navigation arrows */}
+          <div className='absolute left-0 right-0 flex md:flex items-center justify-center px-0 '>
+            <button className='hidden md:block hover:scale-125'>
+              <ChevronLeftIcon onClick={() => handleClick('left')} className='h-9 w-9 text-white' />
+            </button>
+            <button className='hidden md:block hover:scale-125'>
+              <ChevronRightIcon onClick={() => handleClick('right')} className='h-9 w-9 text-white' />
+            </button>
+          </div>
         </div>
       )}
     </div>
