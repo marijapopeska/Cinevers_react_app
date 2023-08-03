@@ -8,8 +8,10 @@ const App = () => {
     <div>
       <HeaderWrapper />
       <Hero />
-      <DiscoverMovies title='Discover Movies' endpoint='/discover/movie'/>
-      <DiscoverMovies title='Discover TV' endpoint='/discover/tv'/>
+      <DiscoverMovies title='Trending All Day' endpoint='/trending/all/day'/>
+      <DiscoverMovies title='Trending All Week' endpoint='/trending/all/week'/>
+      <DiscoverMovies title='Now Playing' endpoint='/movie/now_playing'/>
+      <DiscoverMovies title='Upcoming Movies' endpoint='/movie/upcoming'/>
     </div>
   );
 };
