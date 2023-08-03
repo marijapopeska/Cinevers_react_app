@@ -14,12 +14,14 @@ const tmdbClient = axios.create({
 });
 
 
-export const getMovies = async () => {
+export const getMovies = async (endpoint) => {
     try {
-        const response = await tmdbClient.get('/discover/movie')
+        const response = await tmdbClient.get(endpoint)
         return response.data
     } catch (error) {
         console.log(error)
         return []
     }
 }
+
+
