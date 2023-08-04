@@ -1,18 +1,20 @@
 import React from 'react';
-import Hero from './components/Hero';
-import HeaderWrapper from './components/HeaderWrapper';
-import DiscoverMovies from './components/discoverMovies';
+import { BrowserRouter, Route, Routes, } from 'react-router-dom';
+import Home from './pages/Home';
+import MoviesDetailsPage from './pages/MoviesDetailsPage';
+import HeaderWrapper from './components/Header/HeaderWrapper';
 
 const App = () => {
   return (
-    <div>
-      <HeaderWrapper />
-      <Hero />
-      <DiscoverMovies title='Trending All Day' endpoint='/trending/all/day'/>
-      <DiscoverMovies title='Trending All Week' endpoint='/trending/all/week'/>
-      <DiscoverMovies title='Now Playing' endpoint='/movie/now_playing'/>
-      <DiscoverMovies title='Upcoming Movies' endpoint='/movie/upcoming'/>
-    </div>
+    <>
+      <BrowserRouter>
+        <HeaderWrapper />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='movie/:id' element={<MoviesDetailsPage />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 };
 

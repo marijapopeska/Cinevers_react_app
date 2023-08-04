@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRightIcon, ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/solid';
-import { videos } from './videosData';
+import { videos } from '../Hero/videosData';
 
 const Hero = () => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);

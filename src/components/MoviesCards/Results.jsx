@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { getMovies } from '../services/tmdbServices';
-import MovieCard from './MovieCard';
+import { getMovies } from '../../services/tmdbServices';
+import MovieCard from '../MoviesCards/MovieCard';
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/solid';
+
 
 const Results = ({ endpoint }) => {
   const [movies, setMovies] = useState([]);
@@ -75,7 +76,6 @@ const Results = ({ endpoint }) => {
     }
   };
 
-
   return (
     <div className='flex overflow-x-scroll scrollbar-hide w=[100%]'>
       {loading === true ? (
@@ -84,7 +84,7 @@ const Results = ({ endpoint }) => {
         <div style={{ width: 'fit-content' }}>
           <div className='flex space-x-4 transition-transform duration-500 ease-in-out' ref={listRef} style={{ transform: `translateX(${translateValue}px)` }}>
             {movies.map((movie, index) => (
-              <MovieCard key={index} movie={movie} />
+              <MovieCard movie={movie} />      
             ))}
           </div>
           {/* Navigation arrows */}
