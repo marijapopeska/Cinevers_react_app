@@ -60,8 +60,8 @@ const Hero = () => {
             </div>
           </div>
         </div>
-       {/* Navigation arrows */}
-       <div className='absolute left-0 right-0 bottom-1/2 flex md:flex items-center justify-between px-8 md:bottom-1/2'>
+        {/* Navigation arrows */}
+        <div className='absolute left-0 right-0 bottom-1/2 flex md:flex items-center justify-between px-8 md:bottom-1/2'>
           <button onClick={prevVideo} className="md:hidden">
             <ChevronLeftIcon className="h-6 w-6 text-white" />
           </button>
