@@ -24,4 +24,14 @@ export const getMovies = async (endpoint) => {
     }
 }
 
+export const getMovieDetails = async (id) => {
+    try {
+        const response = await tmdbClient.get(`/movie/${id}`)
+        return response.data
+    } catch (eror) {
+        console.log(eror)
+        return null
+    }
+}
+
 

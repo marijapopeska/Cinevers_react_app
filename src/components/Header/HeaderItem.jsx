@@ -3,7 +3,7 @@ import React from 'react';
 const HeaderItem = ({ Icon, hideOnMobile = false }) => {
   return (
     <div
-      className={`flex cursor-pointer group sm:w-12 ${
+      className={`flex cursor-pointer group ${
         hideOnMobile ? 'hidden md:flex' : ''
       }`}
     >
