@@ -120,7 +120,7 @@ const MovieDetails = () => {
 				style={{
 					backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
 					backgroundSize: 'cover',
-					opacity: '0.1', // Adjust the opacity as needed
+					opacity: '0.1', 
 				}}
 			/>
 		</div>
