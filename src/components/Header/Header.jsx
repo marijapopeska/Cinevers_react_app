@@ -1,9 +1,15 @@
-import React from 'react';
-import HeaderItem from '../Header/HeaderItem'
+import React, { useState } from 'react';
+import HeaderItem from '../Header/HeaderItem';
 import { MenuIcon, SearchIcon, BellIcon } from '@heroicons/react/outline';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+    const handleSearchClick = () => {
+        setIsSearchOpen(!isSearchOpen);
+    };
+
     return (
         <div>
             <header className='flex sm:flex-row m-8 mt-6 mb-6 justify-between items-center'>
@@ -21,13 +27,22 @@ const Header = () => {
                 </Link>
 
                 <div className='flex flex-grow max-w-2xl gap-6 items-center justify-end font-lato'>
-                    <div className='hidden md:flex border-b-[1px] border-white items-center p-1 focus-within:border-primary'>
-                        <input type="text"
-                            className=' bg-transparent outline-0 flex-1'
-                            placeholder='Search...'
+                    <div className={`flex ${isSearchOpen ? 'border-b-[1px] border-white items-center p-1 focus-within:border-primary transition-all' : ''}`}>
+                        {isSearchOpen && (
+                            <input
+                                type='text'
+                                className='bg-transparent outline-0 flex-1'
+                                placeholder='Search...'
+                                style={{ width: isSearchOpen ? '200px' : '0' }}
+                            />
+                        )}
+                        <HeaderItem
+                            Icon={SearchIcon}
+                            hideOnMobile={true}
+                            onClick={handleSearchClick}
                         />
-                        <HeaderItem Icon={SearchIcon} hideOnMobile={true} />
                     </div>
+
                     <HeaderItem Icon={BellIcon} hideOnMobile={true} />
 
                     <div className='flex flex-row cursor-pointer hover:scale-125 transition-transform'>
@@ -37,7 +52,6 @@ const Header = () => {
                             alt='User'
                         />
                     </div>
-
                 </div>
             </header>
         </div>
