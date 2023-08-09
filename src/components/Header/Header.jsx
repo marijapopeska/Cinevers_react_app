@@ -2,19 +2,31 @@ import React, { useState } from 'react';
 import HeaderItem from '../Header/HeaderItem';
 import { MenuIcon, SearchIcon, BellIcon } from '@heroicons/react/outline';
 import { Link } from 'react-router-dom';
+import Sidebar from './Sidebar';
 
 const Header = () => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
     const handleSearchClick = () => {
         setIsSearchOpen(!isSearchOpen);
     };
 
+    const handleMenuClick = () => {
+        setIsSidebarOpen(!isSidebarOpen)
+    }
+
+    const handleCloseSidebar = () => {
+        setIsSidebarOpen(false)
+    }
+
     return (
         <div>
             <header className='flex sm:flex-row m-8 mt-6 mb-6 justify-between items-center'>
                 <div className='flex flex-grow max-w-2xl gap-6'>
-                    <HeaderItem Icon={MenuIcon} />
+                    <div className=' cursor-pointer' onClick={handleMenuClick}>
+                        <HeaderItem Icon={MenuIcon} />
+                    </div>
                     <h2 className='hidden md:flex hover:text-white cursor-pointer font-lato'>
                         Movies
                     </h2>
@@ -54,6 +66,9 @@ const Header = () => {
                     </div>
                 </div>
             </header>
+            <Sidebar
+            isOpen={isSidebarOpen}
+            onClose={handleCloseSidebar} />
         </div>
     );
 };

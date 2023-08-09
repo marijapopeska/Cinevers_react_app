@@ -48,12 +48,12 @@ const MovieDetails = () => {
 			<div className="flex flex-col md:flex-row ml-8 mr-8 mt-24 md:mt-32 mb-8 z-10 relative justify-center md:justify-start ">
 				{/* Movie Poster */}
 				<img
-					className="w-[400px] h-[400pxmd:h-[600px] mr-8 md:mr-8 object-cover rounded-md"
+					className="w-[400px] h-[400px md:h-[600px] mr-8 md:mr-8 object-cover rounded-md"
 					src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
 					alt={title}
 				/>
 
-				<div className="flex flex-col h-[600px] justify-between">
+				<div className="flex flex-col justify-between">
 					{/* Movie Details */}
 					<div className="text-white">
 						<h1 className="text-3xl font-semibold mb-2">{title}</h1>
