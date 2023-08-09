@@ -45,7 +45,7 @@ const MovieDetails = () => {
 			<HeaderWrapper />
 
 			{/* Main Content */}
-			<div className="flex flex-col md:flex-row ml-8 mr-8 mt-24 md:mt-32 mb-8 z-0 relative justify-center md:justify-start ">
+			<div className="flex flex-col md:flex-row ml-8 mr-8 mt-24 md:mt-32 mb-8 relative justify-center md:justify-start ">
 				{/* Movie Poster */}
 				<img
 					className="w-[400px] h-[400px md:h-[600px] mr-8 md:mr-8 object-cover rounded-md"
@@ -77,8 +77,8 @@ const MovieDetails = () => {
 						<p className="text-lg leading-relaxed lg:w-[60%] md:w-[100%]">{overview}</p>
 
 						{/* Action buttons */}
-						<div className="button-container md:flex items-center py-6">
-							<button className="bg-white text-black border border-black py-2 px-4 rounded-full flex items-center justify-center space-x-2 w-full md:w-auto hover:bg-gray-200 hover:scale-105 transition-transform">
+						<div className="button-container md:flex items-center py-6 ">
+							<button className="bg-white cursor-pointer z-10 text-black border border-black py-2 px-4 rounded-full flex items-center justify-center space-x-2 w-full md:w-auto hover:bg-gray-200 hover:scale-105 transition-transform">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="currentColor"
@@ -95,8 +95,8 @@ const MovieDetails = () => {
 								</svg>
 								<span>Watch Movie</span>
 							</button>
-							<div className="button-container md:ml-4 mt-4 md:mt-0">
-								<button className="bg-transparent text-gray-300 border-gray-300 border py-2 px-6 rounded-full flex items-center justify-center space-x-2 w-full md:w-auto  hover:scale-105 transition-transform">
+							<div className="button-container md:ml-4 mt-4 md:mt-0 cursor-pointer z-10">
+								<button className="bg-transparent  text-gray-300 border-gray-300 border py-2 px-6 rounded-full flex items-center justify-center space-x-2 w-full md:w-auto  hover:scale-105 transition-transform">
 									<DownloadIcon className="h-4 w-4 text-white" />
 									<span>Download</span>
 								</button>
@@ -105,11 +105,9 @@ const MovieDetails = () => {
 					</div>
 
 					{/* Back to Home Link */}
-					<Link to="/">
-						<div className=" hidden md:flex cursor-pointer hover:text-gray-300">
-							<ChevronLeftIcon className="h-6 w-6 text-white" />
-							Back to Home
-						</div>
+					<Link to="/" className="hidden md:flex items-center cursor-pointer hover:text-gray-300 z-10">
+						<ChevronLeftIcon className="h-6 w-6 text-white" />
+						<span className="ml-2">Back to Home</span>
 					</Link>
 				</div>
 			</div>
@@ -120,7 +118,7 @@ const MovieDetails = () => {
 				style={{
 					backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
 					backgroundSize: 'cover',
-					opacity: '0.1', 
+					opacity: '0.1',
 				}}
 			/>
 		</div>
