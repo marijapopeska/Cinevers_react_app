@@ -45,7 +45,7 @@ const MovieDetails = () => {
 			<HeaderWrapper />
 
 			{/* Main Content */}
-			<div className="flex flex-col md:flex-row ml-8 mr-8 mt-24 md:mt-32 mb-8 z-10 relative justify-center md:justify-start ">
+			<div className="flex flex-col md:flex-row ml-8 mr-8 mt-24 md:mt-32 mb-8 z-0 relative justify-center md:justify-start ">
 				{/* Movie Poster */}
 				<img
 					className="w-[400px] h-[400px md:h-[600px] mr-8 md:mr-8 object-cover rounded-md"

@@ -14,7 +14,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
     return (
         <div
-            className={` absolute h-screen top-0 left-0 w-full md:w-72 bg-black bg-opacity-100 md:bg-black md:bg-opacity-90 text-white p-4 transform transition-transform duration-500 ${isOpen ? 'translate-x-0' : '-translate-x-full'
+            className={` absolute h-screen top-0 left-0 w-full md:w-72 bg-black bg-opacity-100 md:bg-black md:bg-opacity-90 z-50 text-white p-4 transform transition-transform duration-500 ${isOpen ? 'translate-x-0' : '-translate-x-full'
                 }`}
         >
             <button
