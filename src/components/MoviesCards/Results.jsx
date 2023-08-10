@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { getMovies } from '../../services/tmdbServices';
 import MovieCard from '../MoviesCards/MovieCard';
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/solid';
+import NotFoundMessage from '../NotFound/NotFoundMessage';
 
 
 const Results = ({ endpoint }) => {
@@ -80,11 +81,13 @@ const Results = ({ endpoint }) => {
     <div className='flex overflow-x-scroll scrollbar-hide w=[100%]'>
       {loading === true ? (
         <h1>Loading...</h1>
-      ) : (
+      ) : movies.length === 0 ? (
+        <NotFoundMessage />
+      ):(
         <div style={{ width: 'fit-content' }}>
           <div className='flex space-x-4 transition-transform duration-500 ease-in-out' ref={listRef} style={{ transform: `translateX(${translateValue}px)` }}>
             {movies.map((movie, index) => (
-              <MovieCard movie={movie} />      
+              <MovieCard movie={movie} />
             ))}
           </div>
           {/* Navigation arrows */}
