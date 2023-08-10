@@ -1,8 +1,10 @@
 import { ChevronRightIcon } from '@heroicons/react/solid';
 import React, { useEffect } from 'react';
-
+import { Link, useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ isOpen, onClose }) => {
+    const navigate = useNavigate()
+
     //Toggle body overflow based on the sidebar open/close state
     useEffect(() => {
         if (isOpen) {
@@ -11,6 +13,14 @@ const Sidebar = ({ isOpen, onClose }) => {
             document.body.style.overflow = 'auto'
         }
     }, [isOpen])
+
+    const handleMoviesClick = () => {
+        navigate('/discover/movie')
+    }
+
+    const handleTVClick = () => {
+        navigate('/discover/tv')
+    }
 
     return (
         <div
@@ -27,19 +37,25 @@ const Sidebar = ({ isOpen, onClose }) => {
 
             </button>
             <ul className="mt-12 font-lato">
-                <li className="px-4 py-2 text-xl">
+                <Link to={'/'}>
+                <li className="px-4 py-2 text-xl cursor-pointer">
                     Home
                 </li>
-                <li className="px-4 py-2 text-xl">
+                </Link>
+                <li 
+                onClick={handleMoviesClick}
+                className="px-4 py-2 text-xl cursor-pointer">
                     Movies
                 </li>
-                <li className="px-4 py-2 text-xl">
+                <li 
+                onClick={handleTVClick}
+                className="px-4 py-2 text-xl cursor-pointer">
                     TV Series
                 </li>
-                <li className="px-4 py-2 text-xl border-b-[1px] border-gray-600">
+                <li className="px-4 py-2 text-xl border-b-[1px] border-gray-600 cursor-pointer">
                     Watch offline
                 </li>
-                <div className='flex justify-between border-b-[1px] border-gray-600 '>
+                <div className='flex justify-between border-b-[1px] border-gray-600 cursor-pointer'>
                     <li className="px-4 py-2 text-xl ">
                         Genres
                     </li>

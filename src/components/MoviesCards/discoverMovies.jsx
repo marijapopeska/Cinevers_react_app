@@ -9,7 +9,6 @@ const DiscoverMovies = ({ title, endpoint }) => {
             <div className='mx-8'>
                 <Results endpoint={endpoint} />
             </div>
-            
         </div>
   );
 };
