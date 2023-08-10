@@ -25,12 +25,20 @@ const Header = () => {
 
     const handleSearchSubmit = (event) => {
         event.preventDefault();
-        if (searchQuery.trim() === ''){
+        if (searchQuery.trim() === '') {
             navigate('/')
-        }else{
+        } else {
             navigate(`/search?q=${searchQuery}`);
         }
     };
+
+    const handleMoviesClick = () => {
+        navigate('/discover/movie')
+    }
+
+    const handleTVClick = () => {
+        navigate('/discover/tv')
+    }
 
     return (
         <div>
@@ -39,10 +47,14 @@ const Header = () => {
                     <div className=' cursor-pointer' onClick={handleMenuClick}>
                         <HeaderItem Icon={MenuIcon} />
                     </div>
-                    <h2 className='hidden md:flex hover:text-white cursor-pointer font-lato'>
+                    <h2
+                        onClick={handleMoviesClick}
+                        className='hidden md:flex hover:text-white cursor-pointer font-lato'>
                         Movies
                     </h2>
-                    <h2 className='hidden md:flex hover:text-white cursor-pointer font-lato'>
+                    <h2 
+                    onClick={handleTVClick}
+                    className='hidden md:flex hover:text-white cursor-pointer font-lato'>
                         TV Series
                     </h2>
                 </div>

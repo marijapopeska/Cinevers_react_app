@@ -4,7 +4,6 @@ import MovieCard from '../MoviesCards/MovieCard';
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/solid';
 import NotFoundMessage from '../NotFound/NotFoundMessage';
 
-
 const Results = ({ endpoint }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -34,6 +33,7 @@ const Results = ({ endpoint }) => {
   }, [movies]);
 
   const handleResponsiveCardWidth = () => {
+
     // card widths for different screen sizes
     const cardWidths = {
       small: 216,
@@ -47,7 +47,6 @@ const Results = ({ endpoint }) => {
     if (screenWidth <= 640) {
       currentCardWidth = cardWidths.small;
     }
-
     return currentCardWidth;
   };
 

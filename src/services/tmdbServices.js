@@ -13,7 +13,6 @@ const tmdbClient = axios.create({
     }
 });
 
-
 export const getMovies = async (endpoint) => {
     try {
         const response = await tmdbClient.get(endpoint)
