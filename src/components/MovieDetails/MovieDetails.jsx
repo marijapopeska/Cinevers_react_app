@@ -29,7 +29,30 @@ const MovieDetails = () => {
 
 	// If movie details are still loading, show a loading message
 	if (!movie) {
-		return <p>Loading...</p>;
+		return (
+			<>
+				<div className="mt-8 ml-8 flex">
+					<Link to="/" className="flex md:flex cursor-pointer hover:text-gray-300">
+						<ChevronLeftIcon className="h-6 w-6 text-white" />
+						<span className="ml-2">Back to Home</span>
+					</Link>
+				</div>
+				<div className="flex items-center justify-center h-screen">
+					<h1 className=' text-[34px] font-montserrat font-semibold'>LOADING</h1>
+					<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="100px" height="100px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+						<circle cx="21.5" cy="57.5" r="7" fill="#292664">
+							<animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1.1764705882352942s" begin="-0.7058823529411765s"></animate>
+						</circle> <circle cx="40.5" cy="57.5" r="7" fill="#667395">
+							<animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1.1764705882352942s" begin="-0.5294117647058824s"></animate>
+						</circle> <circle cx="59.5" cy="57.5" r="7" fill="#94a9ce">
+							<animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1.1764705882352942s" begin="-0.35294117647058826s"></animate>
+						</circle> <circle cx="78.5" cy="57.5" r="7" fill="#b5ccf1">
+							<animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1.1764705882352942s" begin="-0.17647058823529413s"></animate>
+						</circle>
+					</svg>
+				</div>
+			</>
+		)
 	}
 
 	// Extract relevant movie details for rendering
